@@ -117,8 +117,8 @@ for(const item of tasks){
    if(item.done){
       li.classList.add("done");
    }
-   updateCounter();
 }
+updateCounter();
 }
 
 
@@ -149,7 +149,7 @@ function updateCounter() {
       count++;
    }
   }
-  counter.textContent = `${count.toString()} task(s) remaining`;
+  counter.textContent = `${count} task(s) remaining`;
   if(tasks.length === 0){
    emptyMsg.classList.remove('hidden');
   } else{
@@ -177,8 +177,13 @@ function updateCounter() {
    taskForm.addEventListener('submit' , (e) =>{
       e.preventDefault();
       let textField =  taskInput.value.trim();
-      if(textField.isEmpty()){return};
-      
+      if(textField === ""){return};
+      tasks.push({
+         id : nextId , text : textField, done : false
+      });
+      nextId++;
+      taskInput.value = "";
+      renderTasks();
    })
 
 /* ============================================================
@@ -190,10 +195,10 @@ function updateCounter() {
    Convert with Number(): Number(li.dataset.id)
 
    TODO inside the listener:
-   a) Get the clicked element: const target = event.target
+   a) Get the clicked element : const target = event.target
    b) Get the li it belongs to: target.parentElement
       and read its id with Number(...dataset.id)
-
+      
    c) If target has the class "task-text" (TOGGLE):
       loop over tasks, find the one with the matching id,
       and flip its value: task.done = !task.done
@@ -211,8 +216,32 @@ function updateCounter() {
    Delete removes the task, the counter updates every time.
    ============================================================ */
 
-// your code here
+   taskList.addEventListener('click' , (event) =>{
+      const target = event.target;
+      const li = target.parentElement;
+      const id = Number(li.dataset.id);
+      if(target.classList.contains('task-text')){
+         for(const item of tasks){
+            if(id===item.id){
+              item.done = !item.done;
+            }
+         }
+         renderTasks();
+      }
 
+      if(target.classList.contains('delete-btn')){
+         let arr = [];
+         for(const item of tasks){
+            if(id!==item.id){
+              arr.push(item);
+            }
+         }
+         tasks = arr;
+         renderTasks();
+      }
+   })
+   
+    
 
 /* ============================================================
    STEP 7: CLEAR COMPLETED TASKS
@@ -224,7 +253,16 @@ function updateCounter() {
    both disappear. Delete everything and the empty message shows.
    ============================================================ */
 
-// your code here
+   clearDone.addEventListener('click' , ()=>{
+      let arr = [];
+      for(const item of tasks){
+         if(!item.done){
+             arr.push(item);
+         }
+      }
+      tasks = arr;
+      renderTasks();
+   })
 
 
 /* ============================================================
