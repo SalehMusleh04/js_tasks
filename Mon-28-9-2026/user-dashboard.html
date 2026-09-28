@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة تحكم المستخدم</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #f0f2f5;
+      color: #333;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eef0f3;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .logout-btn {
+      background-color: #e53e3e;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .logout-btn:hover {
+      background-color: #c53030;
+    }
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .info-item {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 6px;
+      border-right: 4px solid #3182ce;
+    }
+    .label {
+      font-weight: bold;
+      color: #4a5568;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .value {
+      font-size: 1.1rem;
+      color: #1a202c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h2>مرحباً بك في حسابك</h2>
+      <!-- زر تسجيل الخروج -->
+      <button id="logoutBtn" class="logout-btn">تسجيل الخروج</button>
+    </div>
+
+    <!-- بطاقة عرض بيانات المستخدم المسجل -->
+    <div class="user-info">
+      <div class="info-item">
+        <span class="label">الاسم:</span>
+        <span id="userName" class="value">---</span>
+      </div>
+      <div class="info-item">
+        <span class="label">البريد الإلكتروني:</span>
+        <span id="userEmail" class="value">---</span>
+      </div>
+      <div class="info-item">
+        <span class="label">نوع الحساب (الصلاحية):</span>
+        <span id="userRole" class="value">---</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
