@@ -69,7 +69,7 @@ console.log(allStudent.sort());
 console.log(allStudent.reverse());
 console.log(allStudent.includes("Saleh Musleh"));
 allStudent.forEach((student , index)=>{
-   console.log(`Student : ${student} and the index : ${index}`)
+  console.log(`Student : ${student} and the index : ${index}`)
 });
 
 
