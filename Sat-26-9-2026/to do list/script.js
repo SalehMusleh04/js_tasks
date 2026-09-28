@@ -56,8 +56,19 @@ let nextId = 4;
    not null. If you see null, check the spelling of the id.
    ============================================================ */
 
-// your code here
-
+   const taskForm = document.getElementById('task-form');
+   const taskInput = document.getElementById('task-input');
+   const taskList = document.getElementById('task-list');
+   const counter = document.getElementById('counter');
+   const emptyMsg = document.getElementById('empty-msg');
+   const clearDone = document.getElementById('clear-done');
+    
+   console.log(taskForm);
+   console.log(taskInput);
+   console.log(taskList);
+   console.log(counter);
+   console.log(emptyMsg);
+   console.log(clearDone);
 
 /* ============================================================
    STEP 2: WRITE THE renderTasks() FUNCTION
@@ -90,7 +101,24 @@ let nextId = 4;
    ============================================================ */
 
 function renderTasks() {
-  // your code here
+  taskList.innerHTML = "";
+for(const item of tasks){
+   const li = document.createElement("li");
+   li.dataset.id = item.id;
+   taskList.appendChild(li);
+   const span = document.createElement('span');
+   span.textContent = item.text;
+   span.classList.add("task-text");
+   li.appendChild(span);
+   const button = document.createElement('button');
+   button.textContent = "Delete";
+   button.classList.add("delete-btn");
+   li.appendChild(button);
+   if(item.done){
+      li.classList.add("done");
+   }
+   updateCounter();
+}
 }
 
 
@@ -99,7 +127,7 @@ function renderTasks() {
    TODO: Scroll to the very bottom of this file and call the
    function there, so the list appears when the page opens.
    ============================================================ */
-
+   renderTasks();
 
 /* ============================================================
    STEP 4: WRITE THE updateCounter() FUNCTION
@@ -115,7 +143,18 @@ function renderTasks() {
    ============================================================ */
 
 function updateCounter() {
-  // your code here
+   let count = 0;
+  for(const item of tasks){
+   if(!item.done){
+      count++;
+   }
+  }
+  counter.textContent = `${count.toString()} task(s) remaining`;
+  if(tasks.length === 0){
+   emptyMsg.classList.remove('hidden');
+  } else{
+   emptyMsg.classList.add('hidden');
+  }
 }
 
 
@@ -135,9 +174,12 @@ function updateCounter() {
    CHECKPOINT: type a task, press Add, it appears at the bottom
    and the counter goes up by 1. Empty input adds nothing.
    ============================================================ */
-
-// your code here
-
+   taskForm.addEventListener('submit' , (e) =>{
+      e.preventDefault();
+      let textField =  taskInput.value.trim();
+      if(textField.isEmpty()){return};
+      
+   })
 
 /* ============================================================
    STEP 6: TOGGLE DONE AND DELETE (event delegation)
