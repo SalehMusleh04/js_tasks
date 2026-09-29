@@ -85,16 +85,16 @@
   <div class="container">
     <div class="header">
       <h2>لوحة تحكم المدير <span class="badge-admin">Admin</span></h2>
-      <!-- زر تسجيل الخروج -->
+      
       <button id="adminLogoutBtn" class="logout-btn">تسجيل الخروج</button>
     </div>
 
-    <!-- معلومات ترحيبية بالمدير -->
+    
     <div class="admin-greeting">
-      <p>مرحباً بك، <strong id="adminName">---</strong> (<span id="adminEmail">---</span>)</p>
+      <p>مرحباً بك، <strong id="adminName">---</strong>  (<span id="adminEmail">---</span>)</p>
     </div>
 
-    <!-- جدول عرض جميع المستخدمين -->
+   
     <div class="table-section">
       <h3>المستخدمون المسجلون في النظام</h3>
       <table>
@@ -105,13 +105,15 @@
             <th>نوع الصلاحية</th>
           </tr>
         </thead>
-        <!-- هذا الجسم ستقوم الجافاسكريبت بملء أسطره لاحقاً -->
+        
         <tbody id="usersTableBody">
-          <!-- أسطر المستخدمين ستُضاف هنا ديناميكياً -->
+          
         </tbody>
       </table>
     </div>
   </div>
 
+
+  <script src="admin-dashboard.js"></script>
 </body>
 </html>
